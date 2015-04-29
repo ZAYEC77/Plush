@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
+use app\models\orders\Order;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\orders\Order */
@@ -15,6 +16,12 @@ use yii\grid\GridView;
 
     <?= $form->field($model, 'price')->textInput(['readonly' => true, 'maxlength' => true]) ?>
 
+    <?php if (!$model->isNewRecord): ?>
+        <?= $form->field($model, 'status')->dropDownList(Order::getStatuses()) ?>
+    <?php endif ?>
+
+    <?= $form->field($model, 'contacts')->textarea(['rows' => 6]) ?>
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= GridView::widget([
@@ -23,7 +30,7 @@ use yii\grid\GridView;
         'columns' => [
             'product.title',
             'price:money',
-            'amount',
+            'amount:quantity',
             'cost:money',
         ],
     ]); ?>

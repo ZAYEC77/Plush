@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="order-form">
                 <p class="price"><?= Yii::t('app', 'Price: ') . Yii::$app->formatter->asMoney($model->price) ?></p>
-                <?= Spinner::widget(['name' => 'amount', 'clientOptions' => ['min' => 1], 'options' => ['readonly' => true], 'value' => 1]); ?>
+                <?= Spinner::widget(['name' => 'amount', 'clientOptions' => ['min' => 1, 'max'=>$model->amount], 'options' => ['readonly' => true], 'value' => 1]); ?>
                 <?= Yii::t('app', 'pcs.') ?>
                 <?= Html::a(Yii::t('app', 'Buy') . ' ' . FA::icon('shopping-cart'), ['/cart/add', 'id' => $model->id], ['class' => 'btn btn-success btn-buy']) ?>
             </div>

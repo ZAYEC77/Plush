@@ -9,6 +9,7 @@ namespace app\components;
 
 use app\models\catalog\Category;
 use app\models\catalog\Vendor;
+use app\models\orders\Order;
 use Yii;
 use yii\helpers\Html;
 
@@ -34,6 +35,11 @@ class Formatter extends \yii\i18n\Formatter
         return isset($category) ? $category->title : Yii::t('app', 'N/A');
     }
 
+    public function asOrderStatus($value)
+    {
+        return (isset(Order::getStatuses()[$value])) ? Order::getStatuses()[$value] : Yii::t('app', 'N/A');
+    }
+
     public function asFancyImage($value)
     {
         if ($value === null) {
@@ -46,6 +52,7 @@ class Formatter extends \yii\i18n\Formatter
     {
         return parent::asDecimal($value, $decimals, $options, $textOptions) . ' ' . Yii::t('app', 'UAH');
     }
+
     public function asQuantity($value, $options = [], $textOptions = [])
     {
         return parent::asInteger($value, $options, $textOptions) . ' ' . Yii::t('app', 'pcs.');

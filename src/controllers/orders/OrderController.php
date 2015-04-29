@@ -3,6 +3,7 @@
 namespace app\controllers\orders;
 
 use app\components\CartTrait;
+use app\models\catalog\OrderSearch;
 use Yii;
 use app\models\orders\Order;
 use yii\data\ActiveDataProvider;
@@ -39,7 +40,11 @@ class OrderController extends Controller
             'query' => Order::find(),
         ]);
 
+        $searchModel = new OrderSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

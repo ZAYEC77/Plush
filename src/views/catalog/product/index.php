@@ -30,6 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'price:money',
             [
+                'attribute' => 'amount',
+                'format' => 'quantity',
+                'contentOptions' => ['class' => 'width-50px'],
+            ],
+            [
                 'filter' => false,
                 'format' => 'raw',
                 'attribute' => 'image',

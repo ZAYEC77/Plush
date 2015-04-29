@@ -17,7 +17,7 @@ use yii\jui\Spinner;
 
     <div class="order-form">
         <p>
-            <?= Spinner::widget(['name' => 'amount', 'clientOptions' => ['min' => 1], 'options' => ['readonly' => true], 'value' => 1]); ?>
+            <?= Spinner::widget(['name' => 'amount', 'clientOptions' => ['min' => 1, 'max'=>$model->amount], 'options' => ['readonly' => true], 'value' => 1]); ?>
             <?= Yii::t('app', 'Price: ') . Yii::$app->formatter->asMoney($model->price) ?>
         </p>
 

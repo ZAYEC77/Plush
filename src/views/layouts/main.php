@@ -60,6 +60,7 @@ AppAsset::register($this);
                 ['label' => Yii::t('app', 'Categories'), 'url' => ['/catalog/category']],
                 ['label' => Yii::t('app', 'Vendors'), 'url' => ['/catalog/vendor']],
                 ['label' => Yii::t('app', 'Users'), 'url' => ['/users']],
+                ['label' => Yii::t('app', 'Settings'), 'url' => ['/settings']],
             ]],
             Yii::$app->user->isGuest ?
                 ['label' => FA::icon('sign-in') . ' ' . Yii::t('app', 'Login'), 'url' => ['/site/login']] :
@@ -75,6 +76,14 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?php foreach (Yii::$app->session->getAllFlashes() as $type => $text): ?>
+
+            <div class="alert alert-<?= $type ?>">
+                <?= $text ?>
+            </div>
+
+        <?php endforeach; ?>
         <?= $content ?>
     </div>
 </div>

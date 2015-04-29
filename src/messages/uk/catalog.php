@@ -19,6 +19,7 @@
 return [
     'ID' => '',
     'Catalog' => '@@Каталог@@',
+    'Amount' => 'Наявна кількість',
     'Are you sure you want to delete this item?' => 'Ви впевнені, що хочете видалити цей запис?',
     'Categories' => 'Категорії',
     'Create' => 'Створити',

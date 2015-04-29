@@ -60,24 +60,26 @@ JS
             'glyph' => [
                 'map' => [
 
-                    'doc' => "glyphicon glyphicon-file",
-                    'docOpen' => "glyphicon glyphicon-file",
-                    'checkbox' => "glyphicon glyphicon-unchecked",
-                    'checkboxSelected' => "glyphicon glyphicon-check",
-                    'checkboxUnknown' => "glyphicon glyphicon-share",
-                    'error' => "glyphicon glyphicon-warning-sign",
-                    'expanderClosed' => "glyphicon glyphicon-plus-sign",
-                    'expanderLazy' => "glyphicon glyphicon-plus-sign",
-                    'expanderOpen' => "glyphicon glyphicon-minus-sign",
-                    'folder' => "fa fa-folder",
-                    'folderOpen' => "glyphicon glyphicon-folder-open",
-                    'loading' => "glyphicon glyphicon-refresh",
+                    'doc' => "fa fa-file-o",
+                    'docOpen' => "fa fa-file",
+                    'checkbox' => "fa fa-square-o",
+                    'checkboxSelected' => "fa fa-check-square-o",
+                    'checkboxUnknown' => "fa fa-share",
+                    'error' => "fa fa-warning-sign",
+                    'expanderClosed' => "fa fa-plus-square-o",
+                    'expanderLazy' => "fa fa-spinner fa-spin",
+                    'expanderOpen' => "fa fa-minus-square-o",
+                    'folder' => "fa fa-folder-o",
+                    'folderOpen' => "fa fa-folder-open-o",
+                    'loading' => "fa fa-refresh",
                 ]
             ],
         ]
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(Helper::getStatuses()) ?>
 

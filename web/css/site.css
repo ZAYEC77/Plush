@@ -167,13 +167,27 @@ a.desc:after {
     padding-right: 15px;
 }
 
+.width-50px {
+    width: 50px;
+}
+
+.ui-fancytree.fancytree-container {
+    font-size: 15px;
+}
+
 .ui-fancytree .fa {
-    color: #333333;
+    color: #222222;
 }
 
 .fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-selected span.fancytree-title,
 .fancytree-container.fancytree-treefocus span.fancytree-title:hover {
     background: transparent;
+    border-color: transparent;
+}
+
+span.fancytree-node.fancytree-selected span.fancytree-title {
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .fancytree-container.fancytree-treefocus span.fancytree-title:focus {
@@ -182,4 +196,38 @@ a.desc:after {
 
 ul.fancytree-container {
     border: 1px solid #cccccc;
+    margin-bottom: 5px;
+}
+
+span.fancytree-title {
+    border-radius: 0;
+    color: #535353;
+}
+
+.fancytree-container .fancytree-checkbox,
+.fancytree-container .fancytree-expander,
+.fancytree-container .fancytree-icon {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active .fa,
+span.fancytree-active.fancytree-selected .fancytree-title,
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active.fancytree-selected span.fancytree-title,
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active,
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active span.fancytree-title {
+    color: #fff;
+}
+
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active span.fancytree-title {
+    background-color: #008cba;
+    border-color: #008cba;
+}
+
+.fancytree-container span.fancytree-checkbox.fa {
+    margin-left: 5px;
+}
+
+.fancytree-container span.fancytree-node {
+    padding-left: 2px;
 }

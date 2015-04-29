@@ -17,10 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Products of category {category}:' => 'Товари категорії {category}:',
-    'Products of vendor {vendor}:' => 'Товари виробника {vendor}:',
-    'Subcategories:' => 'Категорії: ',
-    'The requested page does not exist.' => 'Ця сторінка не доступна',
+    'Settings' => 'Налаштування',
     'About' => 'Про',
     'Administration' => 'Адміністування',
     'Browse' => 'Огляд',
@@ -37,7 +34,11 @@ return [
     'Orders' => 'Замовлення',
     'Price: ' => 'Ціна: ',
     'Products' => 'Товари',
+    'Products of category {category}:' => 'Товари категорії {category}:',
+    'Products of vendor {vendor}:' => 'Товари виробника {vendor}:',
     'Read more' => 'Читати більше',
+    'Subcategories:' => 'Категорії: ',
+    'The requested page does not exist.' => 'Ця сторінка не доступна',
     'UAH' => 'грн.',
     'Users' => 'Користувачі',
     'Vendor: ' => 'Виробник: ',

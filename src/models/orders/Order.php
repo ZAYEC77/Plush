@@ -16,12 +16,18 @@ use yz\shoppingcart\ShoppingCart;
  * @property string $price
  * @property integer $userId
  * @property string $description
+ * @property string $contacts
  * @property integer $createdAt
+ * @property integer $status
  *
  * @property OrderItem[] $orderItems
  */
 class Order extends ActiveRecord
 {
+    const STATUS_NEW = 1;
+    const STATUS_IN_PROGRESS = 2;
+    const STATUS_DONE = 3;
+
     /** @var OrderItem[] */
     protected $_items = [];
 
@@ -40,9 +46,9 @@ class Order extends ActiveRecord
     {
         return [
             [['price'], 'number'],
-            [['userId', 'createdAt'], 'integer'],
-            [['description'], 'string'],
-            [['description'], 'required'],
+            [['userId', 'createdAt', 'status'], 'integer'],
+            [['description', 'contacts'], 'string'],
+            [['contacts', 'status'], 'required'],
         ];
     }
 
@@ -56,6 +62,8 @@ class Order extends ActiveRecord
             'price' => Yii::t('orders', 'Price'),
             'userId' => Yii::t('orders', 'User ID'),
             'description' => Yii::t('orders', 'Notes'),
+            'status' => Yii::t('orders', 'Status'),
+            'contacts' => Yii::t('orders', 'Contacts'),
             'createdAt' => Yii::t('orders', 'Created At'),
         ];
     }
@@ -113,6 +121,12 @@ class Order extends ActiveRecord
         if (!Yii::$app->user->isGuest) {
             $this->userId = Yii::$app->user->id;
         }
+        if (!$insert) {
+            $this->price = 0;
+            foreach ($this->orderItems as $item) {
+                $this->price += $item->cost;
+            }
+        }
         return parent::beforeSave($insert);
     }
 
@@ -164,5 +178,15 @@ class Order extends ActiveRecord
         parent::afterDelete();
     }
 
-
+    /**
+     * @return array
+     */
+    public static function getStatuses()
+    {
+        return [
+            self::STATUS_NEW => Yii::t('orders', 'New'),
+            self::STATUS_IN_PROGRESS => Yii::t('orders', 'In Progress'),
+            self::STATUS_DONE => Yii::t('orders', 'Done'),
+        ];
+    }
 }

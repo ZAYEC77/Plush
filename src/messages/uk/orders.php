@@ -17,10 +17,14 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cost' => 'Вартість',
+    'Done' => 'Виконано',
     'ID' => '',
+    'In Progress' => 'В процесі',
+    'New' => 'Новий',
     'Amount' => 'Кількість',
     'Are you sure you want to delete this item?' => 'Ви впевнені, що хочете видалити цей запис?',
+    'Contacts' => 'Контактна інформація',
+    'Cost' => 'Вартість',
     'Create' => 'Створити',
     'Create Order' => 'Створити замовлення',
     'Create Order Item' => 'Додати елемент замовлення',
@@ -32,6 +36,9 @@ return [
     'Orders' => 'Замовлення',
     'Price' => 'Ціна',
     'Product ID' => 'Товар',
+    'Reset' => 'Скинути',
+    'Search' => 'Пошук',
+    'Status' => 'Статус',
     'Update' => 'Редагувати',
     'Update Order Item: ' => 'Редагування товару в замовленні: ',
     'Update Order: ' => 'Редагування замовлення: ',

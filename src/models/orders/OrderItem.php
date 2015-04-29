@@ -79,4 +79,12 @@ class OrderItem extends ActiveRecord
     {
         return $this->hasOne(Product::className(), ['id' => 'productId']);
     }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        if (!$insert) {
+            $this->order->save(false);
+        }
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

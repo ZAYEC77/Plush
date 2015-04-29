@@ -20,6 +20,7 @@ use yz\shoppingcart\CartPositionTrait;
  * @property string $description
  * @property integer $vendorId
  * @property string $price
+ * @property integer $amount
  * @property integer $status
  * @property integer $createdAt
  * @property integer $updatedAt
@@ -71,8 +72,9 @@ class Product extends ActiveRecord implements CartPositionInterface
         return [
             [['description'], 'string'],
             [['vendorId', 'status'], 'integer'],
+            [['amount'], 'integer', 'min' => 0],
             [['price'], 'number'],
-            [['price', 'title'], 'required'],
+            [['price', 'title', 'amount'], 'required'],
             [['createdAt', 'updatedAt', 'categoriesList'], 'safe'],
             [['title', 'image'], 'string', 'max' => 255]
         ];
@@ -92,6 +94,7 @@ class Product extends ActiveRecord implements CartPositionInterface
             'categoriesList' => Yii::t('catalog', 'Categories'),
             'vendorId' => Yii::t('catalog', 'Vendor'),
             'price' => Yii::t('catalog', 'Price'),
+            'amount' => Yii::t('catalog', 'Amount'),
             'status' => Yii::t('catalog', 'Status'),
             'createdAt' => Yii::t('catalog', 'Created At'),
             'updatedAt' => Yii::t('catalog', 'Updated At'),

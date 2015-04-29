@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'price:money',
             'description:ntext',
             'createdAt:datetime',
+            'status:orderStatus',
         ],
     ]) ?>
 
@@ -39,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $model->getItemsProvider(),
         'columns' => [
             'product.title',
-            'price',
-            'amount',
+            'price:money',
+            'amount:quantity',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'controller' => 'orders/order-item',

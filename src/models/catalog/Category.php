@@ -145,7 +145,6 @@ class Category extends ActiveRecord
                         $r['children'] = $c;
                     }
                     $result[] = $r;
-                    unset($list[$i]);
                 }
             }
             return $result;

@@ -27,21 +27,6 @@ class OrderItemController extends Controller
     }
 
     /**
-     * Lists all OrderItem models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => OrderItem::find(),
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
      * Displays a single OrderItem model.
      * @param integer $id
      * @return mixed
@@ -63,7 +48,7 @@ class OrderItemController extends Controller
         $model = new OrderItem();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/orders/order/view', 'id' => $model->orderId]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +67,7 @@ class OrderItemController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/orders/order/view', 'id' => $model->orderId]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -98,9 +83,10 @@ class OrderItemController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['/orders/order/view', 'id' => $model->orderId]);
     }
 
     /**
