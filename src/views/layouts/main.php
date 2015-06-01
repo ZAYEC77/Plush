@@ -59,8 +59,9 @@ AppAsset::register($this);
                 ['label' => Yii::t('app', 'Products'), 'url' => ['/catalog/product']],
                 ['label' => Yii::t('app', 'Categories'), 'url' => ['/catalog/category']],
                 ['label' => Yii::t('app', 'Vendors'), 'url' => ['/catalog/vendor']],
-                ['label' => Yii::t('app', 'Users'), 'url' => ['/users']],
+               // ['label' => Yii::t('app', 'Users'), 'url' => ['/users']],
                 ['label' => Yii::t('app', 'Settings'), 'url' => ['/settings']],
+                ['label' => Yii::t('app', 'Statistic'), 'url' => ['/statistic']],
             ]],
             Yii::$app->user->isGuest ?
                 ['label' => FA::icon('sign-in') . ' ' . Yii::t('app', 'Login'), 'url' => ['/site/login']] :

@@ -17,7 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'ID' => '',
     'Catalog' => '@@Каталог@@',
     'Amount' => 'Наявна кількість',
     'Are you sure you want to delete this item?' => 'Ви впевнені, що хочете видалити цей запис?',
@@ -31,6 +30,7 @@ return [
     'Description' => 'Опис',
     'Disable' => 'Не активний',
     'Enable' => 'Активний',
+    'ID' => 'ID',
     'Image' => 'Зображення',
     'Parent Category' => 'Батьківська категорія',
     'Price' => 'Ціна',

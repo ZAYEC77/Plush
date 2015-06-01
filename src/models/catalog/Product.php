@@ -4,9 +4,9 @@ namespace app\models\catalog;
 
 use app\components\PictureTrait;
 use app\components\ProductQuery;
+use voskobovich\behaviors\ManyToManyBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use voskobovich\behaviors\ManyToManyBehavior;
 use yii\db\ActiveRecord;
 use yz\shoppingcart\CartPositionInterface;
 use yz\shoppingcart\CartPositionTrait;
@@ -53,7 +53,7 @@ class Product extends ActiveRecord implements CartPositionInterface
      */
     public static function find()
     {
-        return Yii::createObject(ProductQuery::className(), [get_called_class()]);
+        return new ProductQuery(get_called_class());
     }
 
     /**

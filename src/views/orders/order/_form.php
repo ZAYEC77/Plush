@@ -1,9 +1,9 @@
 <?php
 
+use app\models\orders\Order;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\grid\GridView;
-use app\models\orders\Order;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\orders\Order */
@@ -13,6 +13,8 @@ use app\models\orders\Order;
 <div class="order-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->errorSummary($model) ?>
 
     <?= $form->field($model, 'price')->textInput(['readonly' => true, 'maxlength' => true]) ?>
 

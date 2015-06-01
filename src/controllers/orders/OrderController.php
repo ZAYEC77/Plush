@@ -4,12 +4,12 @@ namespace app\controllers\orders;
 
 use app\components\CartTrait;
 use app\models\catalog\OrderSearch;
-use Yii;
 use app\models\orders\Order;
+use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * OrderController implements the CRUD actions for Order model.
@@ -73,7 +73,7 @@ class OrderController extends Controller
             $this->redirect(['/cart']);
         }
         $model = Order::createFromCart();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save(false)) {
             $this->cart->removeAll();
             if (Yii::$app->user->isGuest) {
                 return $this->redirect(['/site/index', 'status' => 'complete_order']);

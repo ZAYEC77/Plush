@@ -10,6 +10,10 @@ body {
     padding: 0 0 60px;
 }
 
+.wrap .navbar-fixed-top {
+    z-index: 0;
+}
+
 .wrap > .container {
     padding: 70px 15px 20px;
 }
@@ -100,6 +104,34 @@ a.desc:after {
     height: 100px;
 }
 
+.site-search #productsearch-vendorid {
+    height: 27px;
+    width: 150px;
+}
+
+.site-search #productsearch-pricefrom,
+.site-search #productsearch-priceto {
+    width: 99px;
+}
+
+.site-search #search-details {
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.site-search .search-form {
+    margin-bottom: 10px;
+}
+
+.site-search .search-form h1 {
+    margin-top: 0;
+}
+
+.search-form form .btn {
+    padding: 2px 12px;
+    margin-top: -3px;
+}
+
 .site-product .order-form {
     margin-bottom: 10px;
 }
@@ -137,6 +169,10 @@ a.desc:after {
 .index-product .ui-spinner input {
     width: 80px;
     margin: 1px 5px;
+}
+
+.statistic-index form input {
+    padding: 7px;
 }
 
 #cart a {

@@ -5,21 +5,24 @@ namespace app\models\catalog;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\catalog\Product;
 
 /**
  * ProductSearch represents the model behind the search form about `app\models\catalog\Product`.
  */
 class ProductSearch extends Product
 {
+    public $searchTitle;
+    public $priceFrom;
+    public $priceTo;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'vendorId', 'status', 'createdAt', 'updatedAt','amount'], 'integer'],
-            [['title', 'image', 'description'], 'safe'],
+            [['id', 'vendorId', 'status', 'createdAt', 'updatedAt', 'amount'], 'integer'],
+            [['title', 'image', 'description', 'searchTitle', 'priceFrom', 'priceTo'], 'safe'],
             [['price'], 'number'],
         ];
     }
@@ -51,8 +54,6 @@ class ProductSearch extends Product
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
@@ -70,6 +71,46 @@ class ProductSearch extends Product
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'description', $this->description]);
 
+        return $dataProvider;
+    }
+
+    public function clientSearch($params)
+    {
+        $query = Product::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+
+        $title = trim($this->searchTitle);
+        $words = explode(' ', $title);
+
+        $query->joinWith('vendor');
+        $query->joinWith('categories');
+
+        foreach ($words as $word) {
+            $query->orFilterWhere(['like', 'vendor.title', $word]);
+            $query->orFilterWhere(['like', 'category.title', $word]);
+            $query->orFilterWhere(['like', 'product.title', $word]);
+        }
+        $query->andFilterWhere([
+            'vendorId' => $this->vendorId,
+        ]);
+
+        $priceFrom = floatval($this->priceFrom);
+        if ($priceFrom) {
+            $query->andWhere(['>=', 'price', $priceFrom]);
+        }
+        $priceTo = floatval($this->priceTo);
+        if ($priceTo) {
+            $query->andWhere(['<=', 'price', $priceTo]);
+        }
         return $dataProvider;
     }
 }

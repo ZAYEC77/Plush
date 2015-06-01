@@ -75,7 +75,7 @@ class Order extends ActiveRecord
     public static function createFromCart()
     {
         $cart = new ShoppingCart();
-        $model = new self();
+        $model = new self(['status' => self::STATUS_NEW]);
         $model->price = $cart->getCost();
         foreach ($cart->getPositions() as $item) {
             $orderItem = new OrderItem();

@@ -4,14 +4,15 @@ namespace app\controllers;
 
 use app\models\catalog\Category;
 use app\models\catalog\Product;
+use app\models\catalog\ProductSearch;
 use app\models\catalog\Vendor;
+use app\models\ContactForm;
+use app\models\LoginForm;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
@@ -54,11 +55,16 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+
+        $model = new ProductSearch();
         $dataProvider = new ActiveDataProvider([
             'query' => Product::find(),
             'pagination' => ['pageSize' => 4]
         ]);
-        return $this->render('index', ['dataProvider' => $dataProvider]);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
     }
 
     public function actionLogin()
@@ -164,6 +170,16 @@ class SiteController extends Controller
         ]);
         return $this->render('products', [
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionSearch()
+    {
+        $model = new ProductSearch();
+        $dataProvider = $model->clientSearch(Yii::$app->request->getQueryParams());
+        return $this->render('search', [
+            'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
